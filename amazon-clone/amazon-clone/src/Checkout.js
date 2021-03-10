@@ -6,7 +6,7 @@ import { useStateValue } from './StateProvider'
 
 
 function Checkout() {
-    const [{ basket }, dispatch] = useStateValue();
+    const [{ basket, user }, dispatch] = useStateValue();
 
     return (
         <div className='checkout'>
@@ -15,7 +15,8 @@ function Checkout() {
                     src='https://m.media-amazon.com/images/G/01/AdProductsWebsite/images/AUX/ILB_BrightColors_Approved.jpg' alt='' />
                 
                 <div>
-                    <h2 className='checkout__title'>Your Shopping Basket</h2>
+                    <h3>Hello {user?.email}!</h3>
+                    <h2 className='checkout__title'>Here is your shopping cart.</h2>
                     {basket.map(item => (
                         <CheckoutProduct
                             id={item.id}
