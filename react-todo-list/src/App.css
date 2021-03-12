@@ -8,14 +8,14 @@
 
 .list__container {
   margin-top: 200px;
-  background-color: rgb(243, 243, 243);
+  background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/fs/a948d849671425.58bb77365e179.jpg);
+  background-size: cover;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 50px 0 50px 0;
-  min-height: 200px;
+    padding: 50px 0 50px 0;
+  min-height: 400px;
   width: 400px;
   border: .2px solid rgb(97, 97, 97);
   box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.185);
@@ -38,6 +38,8 @@ body, html {
 
 li {
   text-align:initial;
+  /* font-size: 20px; */
+  font-family: 'Short Stack', sans-serif;
 }
 
 .App-logo {
