@@ -1,5 +1,5 @@
 import React from 'react'
-import { Checkbox, IconButton, ListItem, Typography } from '@material-ui/core'
+import { Checkbox, IconButton, ListItem } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 
 function Todo({ todo, toggleComplete, removeTodo }) {
