@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  height: 100vh;
+}
+
+.modal-backdrop {
+  /* bug fix - no overlay */    
+  display: none;    
 }
 
 .App-logo {

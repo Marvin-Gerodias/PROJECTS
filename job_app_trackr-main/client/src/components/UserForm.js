@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
+import '../css/UserForm.css'
 
 function UserForm() {
     // const [user, setUser] = useState({})
@@ -20,13 +21,15 @@ function UserForm() {
 
     return (
         <div>
-            <form onSubmit={submitHandler}>
-                <h2>Enter a New Username: </h2><br/>
-                <input name="username" type="text" placeholder="username" class="form-control" onChange={(e) => setUsername(e.target.value)}/><br/><br/>
-                <button className="btn btn-primary btn-sm">Create User</button>
-            </form>
+            <div className="userform-container">
+                <form onSubmit={submitHandler}>
+                    <h4>Create a New Username: </h4><br/>
+                    <input name="username" type="text" placeholder="username" class="form-control" onChange={(e) => setUsername(e.target.value)}/><br/><br/>
+                    <button className="btn btn-primary btn-sm">Create User</button>
+                </form>
+            </div>
         </div>
     )
 }
 
-export default UserForm;
+export default UserForm; 

@@ -32,6 +32,13 @@ addJobToUser: (req, res) => {
     })
     .catch(err => res.status(400).json(err))
 },
+
+
+getOneJob: (req, res) => {
+},
+
+
+//  ------------------- TOXIC BELOW -------------------- //
 updateJob: (req, res) => {
     // Find user by ID
     let updateObj = {$set: {}};

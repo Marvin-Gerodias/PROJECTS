@@ -20,7 +20,7 @@ const JobForm = (props) => {
 
     function submitHandler(e) {
         // e.preventDefault(); // refreshes the screen, shows added jobs, and clears the form
-        console.log("Hello")
+        console.log("from modal window")
         axios.post(`http://localhost:8000/api/users/${props.id}/jobs`, {
             companyName,
             jobTitle,
@@ -47,8 +47,8 @@ const JobForm = (props) => {
             <form onSubmit={submitHandler} className="main_form">
             
                 <div className="form_box">
-                    <div className="left_box mb-3">
-                    <h4>Add a new job!</h4>
+                    <div className="left_box">
+                    
 
                         <p><input type="text" class="form-control" name="companyName" placeholder = "Company Name" onChange={(e) => setCompanyName(e.target.value)} /></p>
 
@@ -65,7 +65,7 @@ const JobForm = (props) => {
                         <p><input type="text" class="form-control" name="jobDescription" placeholder = "Job Description" onChange={(e) => setJobDescription(e.target.value)} /></p>
                     </div>
                     
-                    <div className="right_box mb-3">    
+                    <div className="right_box">    
 
                         <p><input type="text" class="form-control" name="companyDescription" placeholder = "Company Description" onChange={(e) => setCompanyDescription(e.target.value)}/></p>
 
@@ -77,7 +77,7 @@ const JobForm = (props) => {
 
                         <p><textarea type="text" class="form-control" name="notes" placeholder = "Extra Notes" onChange={(e) => setNotes(e.target.value)} /></p>
                         
-                        <button className="btn btn-outline-primary">Add Job</button>
+                        <button type="submit" className="btn btn-outline-primary">Add Job</button>
                     </div>
                 </div>
                 {/* <div className="status_box">

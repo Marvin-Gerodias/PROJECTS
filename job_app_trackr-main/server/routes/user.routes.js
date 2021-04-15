@@ -6,5 +6,6 @@ module.exports = (app) => {
     app.post('/api/users', routesCtl.createUser)
     app.put('/api/users/:id', routesCtl.updateUser)
     app.post('/api/users/:id/jobs', routesCtl.addJobToUser)
+    app.get('/api/user_job/:id', routesCtl.getOneJob)
     app.put('/api/users/:user_id/:job_id/updateJob', routesCtl.updateJob)
 }
