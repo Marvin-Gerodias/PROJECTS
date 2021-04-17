@@ -1,0 +1,118 @@
+.portal__container {
+    background-image:url("https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F34%2F2020%2F09%2F08%2Fgray-office-space-getty-0920-2000.jpg");
+    height: 100vh;
+}
+
+.comp__container {
+    display: flex;
+    align-items: center;
+    /* margin-top: 15vh; */
+    justify-content: center;
+    backdrop-filter: blur(7px);
+    box-shadow: inset 0 0 10em 1em rgba(0, 0, 0, 0.397);
+    height: 100vh;
+    
+
+}
+
+.comp1 {
+
+    height: 38rem;
+    width: 30vw;
+    /* margin-top: 15vh; */
+    padding: 3rem;
+    /* border: 1px solid gray; */
+    border-radius: 10px;
+    text-align: left;
+    /* background-color: #d3d0cd; */
+    margin-right: 2vw;
+}
+
+.comp1 h1 {
+    font-size: 90px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    color: #e05c4b;
+}
+
+.comp1 p {
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.comp2 {
+    height: 38rem;
+    width: 25vw;
+    margin-top: 0;
+    padding: 3rem;
+    border: 0.5px solid rgb(199, 199, 199);
+    border-radius: 20px;
+    background-color: #f5f8f8;
+    border: 1px solid #c9cece;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.226);
+}
+
+.comp2 input {
+    margin-top: -8px;
+    height: 5vh;
+    font-size: 1.3rem;
+    /* border-radius: 10px; */
+    font-family: 'montserrat', sans-serif;
+    font-weight: 200;
+    /* border: 1px solid red; */
+}
+
+.comp2 button {
+    /* border: 1px solid red; */
+    /* margin-top: -10px; */
+    margin-top: -0.5rem;
+    height: 3rem;
+    width: 7vw;
+    background-color:#036962;
+    border: none;
+}
+
+.comp2 button:hover {
+    background-color: #048A81;
+}
+
+.comp2 h2 {
+    font-size: 2.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    margin-top: -10px;
+    color: #7e7e7e;
+}
+
+.comp2 h4 {
+    font-size: 1.4rem;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-top: 2rem;
+    color: #7e7e7e
+}
+
+.comp2 select {
+    width: 20vw;
+    height: 5vh;
+    font-size: 1.3rem;
+    color: #353b3c;
+    border-radius: 3px;
+    border: 0.5px solid #cacaca;
+    color: rgb(185, 185, 185);
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+.comp2 option {
+    width: 27.5rem;
+    height: 5vh;
+    font-size: 1.3rem;
+    color: #353b3c;
+    border-radius: 0 0 10px 10px;
+    border: 0.5px solid #cacaca;
+}
