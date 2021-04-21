@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { React, useState, useEffect } from 'react';
-import { navigate, Link } from '@reach/router';
+import { navigate } from '@reach/router';
 
 function ExistingUsers() {
     const [users, setUsers] = useState([]);
@@ -33,26 +33,26 @@ function ExistingUsers() {
     return (
         <div className="table__container">
                 <h4>Already have an account?</h4>
-            {/* <table>
-                <tbody>
-                {users.map((user, index) => (
-                        <tr>
-                            <td onClick={() => navigate(`/dashboard/${user._id}`)}>
-                                {user.username}
-                            </td>
-                            <td><button onClick={() => handleDelete(user._id)}>Delete</button></td>
-                        </tr>
-                ))}
-                </tbody>
-            </table> */}
             
                 <select id="selectBox" onChange={handleSelect}>
                             <option selected disabled> Select A User</option>
                         {users.map((user, index) => (
                             <option value={user._id}>{user.username}</option>
-                        ))}
+                            ))}
                 </select>
                 
+                            {/* <table>
+                                <tbody>
+                                {users.map((user, index) => (
+                                        <tr>
+                                            <td onClick={() => navigate(`/dashboard/${user._id}`)}>
+                                                {user.username}
+                                            </td>
+                                            <td><button onClick={() => handleDelete(user._id)}>Delete</button></td>
+                                        </tr>
+                                ))}
+                                </tbody>
+                            </table> */}
             
         </div>
     )

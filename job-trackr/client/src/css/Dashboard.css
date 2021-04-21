@@ -1,0 +1,223 @@
+.wrapper__ {
+    background-color: #036962;
+    height: 100vh;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main__ {
+    background-color: #FBFBF2;
+    height: 90vh;
+    width: 90vw;
+    border-radius: 15px;
+    border: 0.5px solid lightgray;
+    display: block;
+}
+
+.main__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main__header h1 {
+    color: #E05C4B;
+    text-align: left;
+    font-size: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.main__header button {
+    height: 40px;
+    margin-right: 30px;
+}
+
+.main__user {
+    width: 18vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.main__user h5 {
+    font-size: 16px;
+    color: lightgray;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.main_body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main__tableHeader {
+    display: flex;
+    text-align: left;
+}
+
+.main__tableHeader p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+    margin-top: 20px;
+    color: #CFD2CD;
+}
+
+.main__job {
+    margin-left: 20rem;
+    width: 10rem;
+}
+
+.main__description {
+    margin-left: 10rem;
+    width: 10rem;
+}
+
+.add__job {
+    margin-top: 20px;
+    float:right;
+    margin-right: 20rem;
+}
+
+.add__job button {
+    width: 300px;
+    font-size: 18px;
+}
+
+.main__noJob {
+    margin-top: 15rem;
+}
+
+.main__noJob h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+}
+
+.main__data {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+/* .main__jobList {
+    height: 70vh;
+    width: 20vw;
+    border: 0.5px solid lightgray;
+    padding: 30px;
+    margin-left: 20rem;
+}
+
+.main__jobInfo {
+    height: 70vh;
+    width: 30vw;
+    border: 0.5px solid lightgray;
+    padding: 30px;
+    margin-left: 10rem;
+} */
+
+.react-tabs {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0 0;
+    width: 100vw;
+    height: 50vh;
+
+    /* border: 1px solid #3c3e43; */
+}
+
+.react-tabs__tab-list {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+.react-tabs__tab {
+    height: 55px;
+    list-style: none;
+    padding: 12px 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgba(224, 224, 224, 0.246);
+
+    
+
+}
+
+.react-tabs__tab--selected {
+    background: white;
+    font-weight: 600;
+
+}
+
+.react-tabs__tab:hover {
+    background: white;
+    box-shadow: -10px 1px 10px 1px rgba(97, 97, 97, 0.109);
+    transition:.5s ease;
+}
+
+.react-tabs__tab-panel {
+    display: none;
+    width: 60rem;
+    height: 50vh;
+    padding-left: 5rem;
+    background-color: white;
+    box-shadow: -7px 7px 9px -7px rgba(0,0,0,0.4);
+}
+
+.react-tabs__tab-panel--selected label{
+    font-size: 15px;
+    font-weight: 200;
+}
+
+.react-tabs__tab-panel--selected {
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 50px 0 50px 0;
+    overflow-y: scroll;
+}
+
+.react-tabs__tab {
+    padding-left: 60px;
+}
+
+.react-tabs__tab--selected {
+    padding-left: 25px;
+    font-size: 20px;
+    color: black;
+}
+
+.panel-content {
+    text-align: left;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #03696228;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #03696250;
+    border-radius: 10px;
+}
