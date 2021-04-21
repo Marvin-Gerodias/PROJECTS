@@ -15,7 +15,7 @@ function Portal() {
                 <div className="comp1">
                     <h1>Job Trackr</h1>
                     <p>Keep track of your job applications in one place. Organize information such as company name, when you applied, job title, and so much more.</p>
-                    <p style={{fontStyle:"italic", fontWeight:"600"}}>Applying for jobs just became organized!</p>
+                    <p style={{fontStyle:"italic", fontWeight:"600"}}>Applying for jobs just got easier!</p>
                 </div>
                 <div className="comp2">
                     <h2>Let's get started!</h2>

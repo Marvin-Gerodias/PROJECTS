@@ -1,5 +1,6 @@
 .portal__container {
     background-image:url("https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F34%2F2020%2F09%2F08%2Fgray-office-space-getty-0920-2000.jpg");
+    /* background-color: #61c9a870; */
     height: 100vh;
 }
 
@@ -39,7 +40,7 @@
 .comp1 p {
     font-size: 25px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .comp2 {

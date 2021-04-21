@@ -19,7 +19,7 @@ function NewUser() {
             <form onSubmit={submitHandler}>
                     <h4>Are you a new user? </h4><br/>
                     <input name="username" type="text" placeholder="Enter A Username" class="form-control" onChange={(e) => setUsername(e.target.value)}/><br/><br/>
-                    <button type="button" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>
     )

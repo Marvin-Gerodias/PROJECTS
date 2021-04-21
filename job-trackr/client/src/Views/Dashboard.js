@@ -34,8 +34,6 @@ function Dashboard(props) {
     }, [user]);
 
     function submitHandler(e) {
-        // e.preventDefault(); // refreshes the screen, shows added jobs, and clears the form
-        console.log("from modal window")
         axios.post(`http://localhost:8000/api/users/${props.id}/jobs`, {
             companyName,
             jobTitle,
