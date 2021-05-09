@@ -24,6 +24,45 @@
     </ul>
     {% endif %}
         
-        <script src="" async defer></script>
+    <form action="/newticketprocess" method="POST">
+        {% csrf_token %}
+
+        <label for="status">Status: </label>
+        <select id="status" name="status">
+            <option selected="true" disabled>Select...</option>
+            <option value="open">Open</option>
+            <option value="in_progress">In Progress</option>
+            <option value="reviewing">Reviewing</option>
+            <option value="closed">Closed</option>
+            <option value="reopened">Reopened</option>
+        </select>
+
+        <label for="issue_type">Issue Type: </label>
+        <select id="issue_type" name="issue_type">
+            <option selected="true" disabled>Select...</option>
+            <option value="bug">Bug</option>
+            <option value="crash">Crash</option>
+            <option value="documentation">Documentation</option>
+            <option value="Feature">Feature</option>
+            <option value="Task">Task</option>
+        </select>
+
+        <label for="comment">Comment: </label>
+        <textarea id="comment" name="comment" rows="5" cols="30"></textarea>
+
+        <label for="priority_level">Priority Level: </label>
+        <select id="priority_level" name="priority_level">
+            <option selected="true" disabled>Select...</option>
+            <option value="low">Low</option>
+            <option value="moderate">Moderate</option>
+            <option value="critical">Critical</option>
+        </select>
+
+        <button>Submit</button>
+    </form>
+
+    <a href="/dashboard"><button>Cancel</button></a>
+
+
     </body>
 </html>

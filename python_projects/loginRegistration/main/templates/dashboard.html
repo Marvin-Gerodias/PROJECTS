@@ -15,7 +15,12 @@
     <body>
         <h1>{{myuser.fname}}'s Dashboard</h1>
         {% for ticket in tickets %}
-        <p>{{ ticket }}</p>
+        <p>{{ ticket.status }}</p>
+        <p>{{ ticket.id }}</p>
+        <p>{{ ticket.issue_type }}</p>
+        <p>{{ ticket.comment }}</p>
+        <p>{{ ticket.priority_level }}</p>
+        <p>{{ ticket.assigned_to.fname }}</p>
         {% endfor %}
         
         <script src="" async defer></script>

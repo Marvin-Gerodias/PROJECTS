@@ -41,22 +41,26 @@ class TicketManager(models.Manager):
     def newticket_validator(self, post_data):
         errors = {}
 
-        if len(post_data["issue_type"]) == 0:
+        if len(post_data.get("status",[])) == 0:
+            errors['status'] = "Please select a status."
+
+        if len(post_data.get("issue_type",[])) == 0:
             errors['issue_type'] = "Please select an issue type."
 
         if len(post_data["comment"]) < 5:
             errors['comment'] = "Comment must be at least 5 characters."
 
-        if len(post_data["priority_level"]) == 0:
+        if len(post_data.get("priority_level",[])) == 0:
             errors['priority_level'] = "Please select a priority level."
-
-        if len(post_data["assigned_to"]) == 0:
-            errors['assigned_to'] = "Ticket requires an asignee."
+        
+        return errors
 
 class Ticket(models.Model):
+    status = models.CharField(max_length=255)
     issue_type = models.CharField(max_length=255)
     comment = models.CharField(max_length=255)
     priority_level = models.CharField(max_length=255)
     assigned_to = models.ForeignKey(User, related_name="tickets", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = TicketManager()

@@ -56,10 +56,23 @@ def newticket(request):
 
 def newticketprocess(request):
     errors = Ticket.objects.newticket_validator(request.POST)
+    print(errors)
     if len(errors) > 0:
-        for error in errors.values():
-            messages.error(request, error)
+        for val in errors.values():
+            messages.error(request, val)
         return redirect('/newticket')
+
+    user = User.objects.get(id = request.session['user_id'])
+    print(user)
+    Ticket.objects.create(
+        status = request.POST['status'],
+        issue_type = request.POST['issue_type'],
+        comment = request.POST['comment'],
+        priority_level = request.POST['priority_level'],
+        assigned_to = user,
+    )
+
+    return redirect('/dashboard')
 
 def logout(request):
     request.session.flush()
