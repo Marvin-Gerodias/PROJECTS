@@ -14,14 +14,37 @@
     </head>
     <body>
         <h1>{{myuser.fname}}'s Dashboard</h1>
-        {% for ticket in tickets %}
-        <p>{{ ticket.status }}</p>
-        <p>{{ ticket.id }}</p>
-        <p>{{ ticket.issue_type }}</p>
-        <p>{{ ticket.comment }}</p>
-        <p>{{ ticket.priority_level }}</p>
-        <p>{{ ticket.assigned_to.fname }}</p>
-        {% endfor %}
+
+        <div style="display: flex; margin-left: 50px;">
+            <div>
+                <h2>Open</h2>
+                {% for ticket in tickets %}
+                {% if ticket.status == "open" %}
+                <p>{{ ticket.status }}</p>
+                <p>{{ ticket.id }}</p>
+                <p>{{ ticket.issue_type }}</p>
+                <p>{{ ticket.comment }}</p>
+                <p>{{ ticket.priority_level }}</p>
+                <p>{{ ticket.assigned_to.fname }}</p>
+                <p>{{ ticket.created_at }}</p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div>
+                <h2>In Progress</h2>
+                {% for ticket in tickets %}
+                {% if ticket.status == "in_progress" %}
+                <p>{{ ticket.status }}</p>
+                <p>{{ ticket.id }}</p>
+                <p>{{ ticket.issue_type }}</p>
+                <p>{{ ticket.comment }}</p>
+                <p>{{ ticket.priority_level }}</p>
+                <p>{{ ticket.assigned_to.fname }}</p>
+                <p>{{ ticket.created_at }}</p>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
         
         <script src="" async defer></script>
     </body>
