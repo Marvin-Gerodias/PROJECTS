@@ -7,21 +7,23 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>New Ticket</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1>{{user.fname}}</h1>
+        <h1>Hello {{user.fname}}! Create a ticket!</h1>
 
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li> {{message}}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
 
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li style="color: red;">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+        
+        <script src="" async defer></script>
     </body>
 </html>

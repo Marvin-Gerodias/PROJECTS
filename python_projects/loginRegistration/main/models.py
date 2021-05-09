@@ -37,44 +37,26 @@ class User(models.Model):
 
 ################################
 
-class ClientManager(models.Manager):
-    def newclient_validator(self, post_data):
-        errors = {}
-        if len(post_data["name"]) < 2:
-            errors['name'] = "Name must have at least 2 characters."
-        
-        if len(post_data["assigned_to"]) == 0:
-            errors['assigned_to'] = "Client requires an asignee."
-        
-class Client(models.Model):
-    name = models.CharField(max_length=255)
-    assigned_to = models.ForeignKey(User, related_name="clients", on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    objects = ClientManager()
-
-################################
-
 class TicketManager(models.Manager):
     def newticket_validator(self, post_data):
         errors = {}
 
-        if len(post_data["project_title"]) < 5:
-            errors['project_title'] = "Project Title must be at least 5 characters."
+        if len(post_data["issue_type"]) == 0:
+            errors['issue_type'] = "Please select an issue type."
 
         if len(post_data["comment"]) < 5:
             errors['comment'] = "Comment must be at least 5 characters."
 
-        if len(post_data["status"]) == 0:
-            errors['status'] = "Please select a status."
+        if len(post_data["priority_level"]) == 0:
+            errors['priority_level'] = "Please select a priority level."
 
         if len(post_data["assigned_to"]) == 0:
             errors['assigned_to'] = "Ticket requires an asignee."
 
 class Ticket(models.Model):
-    project_title = models.CharField(max_length=255)
+    issue_type = models.CharField(max_length=255)
     comment = models.CharField(max_length=255)
-    status = models.CharField(max_length=255)
+    priority_level = models.CharField(max_length=255)
     assigned_to = models.ForeignKey(User, related_name="tickets", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

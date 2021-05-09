@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import User
+from .models import User, Ticket
 from django.contrib import messages
 import bcrypt
 
@@ -28,7 +28,7 @@ def reg_process(request):
             password = hashed,
         )
         request.session['user_id'] = newuser.id
-        return redirect ('/success')
+        return redirect ('/dashboard')
 
 def login(request):
     errors = User.objects.login_validator(request.POST)
@@ -42,13 +42,25 @@ def login(request):
         logged_user = user[0] 
         if bcrypt.checkpw(request.POST["password"].encode(), logged_user.password.encode()):
             request.session['user_id'] = logged_user.id
-            return redirect('/success')
+            return redirect('/dashboard')
     else:
         messages.error(request, "Login failed. Try again.")
     return redirect('/')
 
+def newticket(request):
+    user = User.objects.get(id = request.session['user_id'])
+    context ={
+        'user' : user,
+    }
+    return render(request, "newticket.html", context)
 
-    
+def newticketprocess(request):
+    errors = Ticket.objects.newticket_validator(request.POST)
+    if len(errors) > 0:
+        for error in errors.values():
+            messages.error(request, error)
+        return redirect('/newticket')
+
 def logout(request):
     request.session.flush()
     return redirect('/')
@@ -63,6 +75,7 @@ def delete(request, id):
 
 def success(request):
     context = {
-        "myuser" : User.objects.get(id = request.session['user_id'])
+        "myuser" : User.objects.get(id = request.session['user_id']),
+        "tickets" :Ticket.objects.all(),
     }
-    return render(request, "success.html", context)
+    return render(request, "dashboard.html", context)
