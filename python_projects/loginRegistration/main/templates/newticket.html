@@ -27,17 +27,17 @@
     <form action="/newticketprocess" method="POST">
         {% csrf_token %}
 
-        <label for="status">Status: </label>
+        <label for="status">Status: </label><br/>
         <select id="status" name="status">
             <option selected="true" disabled>Select...</option>
-            <option value="open">Open</option>
-            <option value="in_progress">In Progress</option>
-            <option value="reviewing">Reviewing</option>
-            <option value="closed">Closed</option>
-            <option value="reopened">Reopened</option>
-        </select>
+            <option value="Open">Open</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Reviewing">Reviewing</option>
+            <option value="Closed">Closed</option>
+            <option value="Reopened">Reopened</option>
+        </select><br/>
 
-        <label for="issue_type">Issue Type: </label>
+        <label for="issue_type">Issue Type: </label><br/>
         <select id="issue_type" name="issue_type">
             <option selected="true" disabled>Select...</option>
             <option value="Bug">Bug</option>
@@ -45,18 +45,18 @@
             <option value="Documentation">Documentation</option>
             <option value="Feature">Feature</option>
             <option value="Task">Task</option>
-        </select>
+        </select><br/>
 
-        <label for="comment">Comment: </label>
-        <textarea id="comment" name="comment" rows="5" cols="30"></textarea>
+        <label for="comment">Comment: </label><br/>
+        <textarea id="comment" name="comment" rows="5" cols="30"></textarea><br/>
 
-        <label for="priority_level">Priority Level: </label>
+        <label for="priority_level">Priority Level: </label><br/>
         <select id="priority_level" name="priority_level">
             <option selected="true" disabled>Select...</option>
             <option value="low">Low</option>
             <option value="moderate">Moderate</option>
             <option value="critical">Critical</option>
-        </select>
+        </select><br/>
 
         <button>Submit</button>
     </form>

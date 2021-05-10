@@ -52,6 +52,7 @@ def newticket(request):
     context ={
         'user' : user,
     }
+    print(user)
     return render(request, "newticket.html", context)
 
 def newticketprocess(request):
@@ -71,7 +72,33 @@ def newticketprocess(request):
         priority_level = request.POST['priority_level'],
         assigned_to = user,
     )
+    return redirect('/dashboard')
 
+def editticket(request, id):
+    ticket = Ticket.objects.get(id = id)
+    context = {
+        "ticket" : ticket
+    }
+    return render(request, 'editticket.html', context)
+
+def editticketprocess(request, id):
+    errors = Ticket.objects.editticket_validator(request.POST)
+    if len(errors) > 0:
+        for val in errors.values():
+            messages.error(request, val)
+        return redirect(f'/editticketprocess/{id}')
+
+    new_ticket = Ticket.objects.get(id = id)
+    new_ticket.status = request.POST['status']
+    new_ticket.issue_type = request.POST['issue_type']
+    new_ticket.comment = request.POST['comment']
+    new_ticket.priority_level = request.POST['priority_level']
+    new_ticket.save()
+    return redirect('/dashboard')
+
+def deleteticket(request, id):
+    d = Ticket.objects.get(id = id)
+    d.delete()
     return redirect('/dashboard')
 
 def logout(request):

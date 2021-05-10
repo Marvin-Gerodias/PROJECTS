@@ -55,6 +55,23 @@ class TicketManager(models.Manager):
         
         return errors
 
+    def editticket_validator(self, post_data):
+        errors = {}
+
+        if len(post_data.get("status",[])) == 0:
+            errors['status'] = "Please select a status."
+
+        if len(post_data.get("issue_type",[])) == 0:
+            errors['issue_type'] = "Please select an issue type."
+
+        if len(post_data["comment"]) < 5:
+            errors['comment'] = "Comment cannot be empty."
+
+        if len(post_data.get("priority_level",[])) == 0:
+            errors['priority_level'] = "Please select a priority level."
+        
+        return errors
+
 class Ticket(models.Model):
     status = models.CharField(max_length=255)
     issue_type = models.CharField(max_length=255)

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Edit Ticket</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li style="color: red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form action="/editticketprocess/{{ticket.id}}" method="POST">
+        {% csrf_token %}
+
+            <label for="status">Status: </label><br/>
+            <select id="status" name="status">
+                <option selected="true" >{{ticket.status}}</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Reviewing">Reviewing</option>
+                <option value="Closed">Closed</option>
+                <option value="Reopened">Reopened</option>
+            </select><br/>
+
+            <label for="issue_type">Issue Type: </label><br/>
+            <select id="issue_type" name="issue_type">
+                <option selected="true" >{{ticket.issue_type}}</option>
+                <option value="Bug">Bug</option>
+                <option value="Crash">Crash</option>
+                <option value="Documentation">Documentation</option>
+                <option value="Feature">Feature</option>
+                <option value="Task">Task</option>
+            </select><br/>
+
+            <label for="comment">Comment: </label><br/>
+            <textarea id="comment" name="comment" rows="5" cols="30">{{ticket.comment}}</textarea><br/>
+
+            <label for="priority_level">Priority Level: </label><br/>
+            <select id="priority_level" name="priority_level">
+                <option selected="true" >{{ticket.priority_level}}</option>
+                <option value="Low">Low</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Critical">Critical</option>
+            </select><br/>
+
+            <button>Submit</button>
+
+        </form>
+
+        <a href="/dashboard"><button>Cancel</button></a>
+    </body>
+</html>
