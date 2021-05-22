@@ -8,57 +8,109 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Edit Ticket</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+       <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Raleway:wght@800&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body>
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li style="color: red;">{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+    <body style="background-color: rgb(245, 245, 245);">
+        <div style = "margin: 10px 0 10px 10px; display: flex;">
+            <div class = "header" style="width: 100vw;">
+                <div class = "title" style="display: flex; justify-content: space-between;">
+                    <h1 style="font-weight: bold;">Ticket Manager <span style="font-family: Montserrat, sans-serif; font-size: 20px; margin-top: -10px;">- Edit Ticket</span></h1>
+                    <div style="text-align: right; display: flex;">
+                        <h6>Signed in as:<br/>{{myuser.fname}} {{myuser.lname}}</h6>
+                        <a href="/logout"><button type="button" class="btn btn-outline-danger btn-sm">Logout</button></a>
+                    </div>
+                </div>
 
-        <form action="/editticketprocess/{{ticket.id}}" method="POST">
-        {% csrf_token %}
+                <div class = "nav">
+                    <a href="/dashboard"><button type="button" class="btn btn-primary" style="width: 200px">Dashboard <i class="fas fa-columns"></i></button></a>
+                    <a href="/mytickets"><button type="button" class="btn btn-primary" style="width: 200px">My Tickets <i class="fas fa-user-alt"></i></button></a>
+                    <a href="/newticket"><button type="button" class="btn btn-success" style="width: 200px">Create New Ticket <i class="fas fa-plus"></i></button></a>
+                </div>
+            </div>
+        </div>
 
-            <label for="status">Status: </label><br/>
-            <select id="status" name="status">
-                <option selected="true" >{{ticket.status}}</option>
-                <option value="Open">Open</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Reviewing">Reviewing</option>
-                <option value="Closed">Closed</option>
-                <option value="Reopened">Reopened</option>
-            </select><br/>
 
-            <label for="issue_type">Issue Type: </label><br/>
-            <select id="issue_type" name="issue_type">
-                <option selected="true" >{{ticket.issue_type}}</option>
-                <option value="Bug">Bug</option>
-                <option value="Crash">Crash</option>
-                <option value="Documentation">Documentation</option>
-                <option value="Feature">Feature</option>
-                <option value="Task">Task</option>
-            </select><br/>
+        <div class="card-group" style="display: flex; margin: auto; justify-content: space-evenly;">
+            <div class="card" style="
+            min-width: 500px; 
+            max-width: 500px; 
+            border: 1px solid rgba(146, 146, 146, 0.541); 
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 3px 5px 0.5px rgba(0, 0, 0, 0.048);
+            align-items: center;
+            ">
 
-            <label for="comment">Comment: </label><br/>
-            <textarea id="comment" name="comment" rows="5" cols="30">{{ticket.comment}}</textarea><br/>
+                <div class = "newTicketHeader">
+                    <div><h4 style="font-weight: bold;">Edit Ticket</h4></div>
+                </div>
 
-            <label for="priority_level">Priority Level: </label><br/>
-            <select id="priority_level" name="priority_level">
-                <option selected="true" >{{ticket.priority_level}}</option>
-                <option value="Low">Low</option>
-                <option value="Moderate">Moderate</option>
-                <option value="Critical">Critical</option>
-            </select><br/>
+                <form action="/editticketprocess/{{ticket.id}}" method="POST">
+                {% csrf_token %}
 
-            <button>Submit</button>
+                <h5>Ticket #: {{ticket.id}}</h5>
 
-        </form>
+                <div style="display:flex;">
+                    <div>
+                        <label for="status">Status: </label><br/>
+                        <select id="status" name="status">
+                            <option selected="true" >{{ticket.status}}</option>
+                            <option value="Open">Open</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Reviewing">Reviewing</option>
+                            <option value="Closed">Closed</option>
+                        </select><br/>
+                    </div>
+                    <div>
+                        <label for="issue_type">Issue Type: </label><br/>
+                        <select id="issue_type" name="issue_type">
+                            <option selected="true" >{{ticket.issue_type}}</option>
+                            <option value="Bug">Bug</option>
+                            <option value="Crash">Crash</option>
+                            <option value="Documentation">Documentation</option>
+                            <option value="Feature">Feature</option>
+                            <option value="Task">Task</option>
+                        </select><br/>
+                    </div>
+                    <div>
+                        <label for="priority_level">Priority Level: </label><br/>
+                        <select id="priority_level" name="priority_level">
+                            <option selected="true" >{{ticket.priority_level}}</option>
+                            <option value="Low">Low</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Critical">Critical</option>
+                        </select><br/>
+                    </div>
+                </div>
+                <div style="margin-left: 20px;">
+                    <label for="comment">Comment: </label><br/>
+                    <textarea id="comment" name="comment" rows="5" cols="50">{{ticket.comment}}</textarea><br/>
+                </div>
+                <div style="margin-left: 120px;">
+                    <button type="submit" class="btn btn-outline-primary btn-md" style="width: 200px">Submit</button>
+                </div>
 
-        <a href="/dashboard"><button>Cancel</button></a>
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li style="color: red;">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                
+
+                </form>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     </body>
 </html>

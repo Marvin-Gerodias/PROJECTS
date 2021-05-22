@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Ticket Manager</title>
+        <title>Issue Tracker</title>
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <meta name="description" content="">
@@ -20,19 +20,18 @@
 
     </head>
     <body style="background-color: rgb(245, 245, 245);">
-
         <div style = "margin: 10px 0 10px 10px; display: flex;">
             <div class = "header" style="width: 100vw;">
                 <div class = "title" style="display: flex; justify-content: space-between;">
-                    <h1 style="font-weight: bold;">Ticket Manager <span style="font-family: Montserrat, sans-serif; font-size: 20px; margin-top: -10px;">- Dashboard</span></h1>
+                    <h1 style="font-weight: bold;">Ticket Manager <span style="font-family: Montserrat, sans-serif; font-size: 20px;">- My Tickets</span></h1>
                     <div style="text-align: right; display: flex;">
                         <h6>Signed in as:<br/>{{myuser.fname}} {{myuser.lname}}</h6>
                         <a href="/logout"><button type="button" class="btn btn-outline-danger btn-sm">Logout</button></a>
                     </div>
                 </div>
 
-                <div class = "nav" style="display: flex;">
-                    <a href="/mytickets"><button type="button" class="btn btn-primary" style="width: 200px">My Tickets <i class="fas fa-user-alt"></i></button></a>
+                <div class = "nav">
+                    <a href="/dashboard"><button type="button" class="btn btn-primary" style="width: 200px">Dashboard <i class="fas fa-columns"></i></button></a>
                     <a href="/newticket"><button type="button" class="btn btn-success" style="width: 200px">Create New Ticket <i class="fas fa-plus"></i></button></a>
                 </div>
             </div>
@@ -54,7 +53,7 @@
                 <hr/>
 
                     {% for ticket in tickets %}
-                    {% if ticket.status == "Open" %}
+                    {% if ticket.status == "Open" and ticket.assigned_to.fname == myuser.fname %}
                     <h5 class="ticket">Ticket #: {{ ticket.id }}</h5>
                     <p>Issue Type: {{ ticket.issue_type }}</p>
                     <p>Details: <br/> {{ ticket.comment }}</p>
@@ -68,14 +67,11 @@
                         <p class="low">{{ ticket.priority_level }}</p>
                     {% endif %}
                     <div class="editDeleteContainer">
-                        <a href="/ticket/{{ticket.id}}"><i class="fas fa-info-circle" data-toggle="tooltip"
-                        data-placement="top" title="Info"></i></a>
-                        {% if ticket.assigned_to.fname == myuser.fname %}
-                        <a href="/editticket/{{ticket.id}}"><i class="far fa-edit" data-toggle="tooltip"
-                        data-placement="top" title="Edit"></i></a>
-                        <a href="/deleteticket/{{ticket.id}}"><i class="far fa-trash-alt" data-toggle="tooltip"
-                        data-placement="top" title="Delete"></i></a>
-                        {% endif %}
+
+                        <a href="/ticket/{{ticket.id}}"><i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Info"></i></a>
+                        <a href="/editticket/{{ticket.id}}"><i class="far fa-edit" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
+                        <a href="/deleteticket/{{ticket.id}}"><i class="far fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>
+
                     </div>
                 <hr/>
                 {% endif %}
@@ -95,7 +91,7 @@
                 <h4 style="font-weight: bold;">In Progress</h4>
                 <hr/>
                 {% for ticket in tickets %}
-                {% if ticket.status == "In Progress" %}
+                {% if ticket.status == "In Progress" and ticket.assigned_to.fname == myuser.fname %}
                 <h5 class="ticket">Ticket #: {{ ticket.id }}</h5>
                 <p>Issue Type: {{ ticket.issue_type }}</p>
                 <p>Details: <br/> {{ ticket.comment }}</p>
@@ -109,14 +105,11 @@
                     <p class="low">{{ ticket.priority_level }}</p>
                 {% endif %}
                 <div class="editDeleteContainer">
-                    <a href="/ticket/{{ticket.id}}"><i class="fas fa-info-circle" data-toggle="tooltip"
-                        data-placement="top" title="Info"></i></a>
-                        {% if ticket.assigned_to.fname == myuser.fname %}
-                        <a href="/editticket/{{ticket.id}}"><i class="far fa-edit" data-toggle="tooltip"
-                        data-placement="top" title="Edit"></i></a>
-                        <a href="/deleteticket/{{ticket.id}}"><i class="far fa-trash-alt" data-toggle="tooltip"
-                        data-placement="top" title="Delete"></i></a>
-                    {% endif %}
+
+                    <a href="/ticket/{{ticket.id}}"><i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Info"></i></a>
+                    <a href="/editticket/{{ticket.id}}"><i class="far fa-edit" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
+                    <a href="/deleteticket/{{ticket.id}}"><i class="far fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>
+
                 </div>
                 <hr/>
                 {% endif %}
@@ -136,7 +129,7 @@
                 <h4 style="font-weight: bold;">Reviewing</h4>
                 <hr/>
                 {% for ticket in tickets %}
-                {% if ticket.status == "Reviewing" %}
+                {% if ticket.status == "Reviewing" and ticket.assigned_to.fname == myuser.fname%}
                 <h5 class="ticket">Ticket #: {{ ticket.id }}</h5>
                 <p>Issue Type: {{ ticket.issue_type }}</p>
                 <p>Details: <br/> {{ ticket.comment }}</p>
@@ -150,14 +143,9 @@
                     <p class="low">{{ ticket.priority_level }}</p>
                 {% endif %}
                 <div class="editDeleteContainer">
-                    <a href="/ticket/{{ticket.id}}"><i class="fas fa-info-circle" data-toggle="tooltip"
-                        data-placement="top" title="Info"></i></a>
-                        {% if ticket.assigned_to.fname == myuser.fname %}
-                        <a href="/editticket/{{ticket.id}}"><i class="far fa-edit" data-toggle="tooltip"
-                        data-placement="top" title="Edit"></i></a>
-                        <a href="/deleteticket/{{ticket.id}}"><i class="far fa-trash-alt" data-toggle="tooltip"
-                        data-placement="top" title="Delete"></i></a>
-                    {% endif %}
+                    <a href="/ticket/{{ticket.id}}"><i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Info"></i></a>
+                    <a href="/editticket/{{ticket.id}}"><i class="far fa-edit" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
+                    <a href="/deleteticket/{{ticket.id}}"><i class="far fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>
                 </div>
                 <hr/>
                 {% endif %}
@@ -177,28 +165,25 @@
                 <h4 style="font-weight: bold;">Closed</h4>
                 <hr/>
                 {% for ticket in tickets %}
-                {% if ticket.status == "Closed" %}
+                {% if ticket.status == "Closed" and ticket.assigned_to.fname == myuser.fname %}
                 <h5 class="ticket">Ticket #: {{ ticket.id }}</h5>
                 <p>Issue Type: {{ ticket.issue_type }}</p>
                 <p>Details: <br/> {{ ticket.comment }}</p>
                 <p>Assignee: {{ ticket.assigned_to.fname }}</p>
                 <p>Created: {{ ticket.created_at }}</p>
-                    {% if ticket.priority_level == "Critical" %}
-                        <p class="critical">{{ ticket.priority_level }}</p>
-                    {% elif ticket.priority_level == "Moderate" %}
-                        <p class="moderate">{{ ticket.priority_level }}</p>
-                    {% elif ticket.priority_level == "Low" %}
-                        <p class="low">{{ ticket.priority_level }}</p>
-                    {% endif %}
+                {% if ticket.priority_level == "Critical" %}
+                    <p class="critical">{{ ticket.priority_level }}</p>
+                {% elif ticket.priority_level == "Moderate" %}
+                    <p class="moderate">{{ ticket.priority_level }}</p>
+                {% elif ticket.priority_level == "Low" %}
+                    <p class="low">{{ ticket.priority_level }}</p>
+                {% endif %}
                 <div class="editDeleteContainer">
-                    <a href="/ticket/{{ticket.id}}"><i class="fas fa-info-circle" data-toggle="tooltip"
-                        data-placement="top" title="Info"></i></a>
-                        {% if ticket.assigned_to.fname == myuser.fname %}
-                        <a href="/editticket/{{ticket.id}}"><i class="far fa-edit" data-toggle="tooltip"
-                        data-placement="top" title="Edit"></i></a>
-                        <a href="/deleteticket/{{ticket.id}}"><i class="far fa-trash-alt" data-toggle="tooltip"
-                        data-placement="top" title="Delete"></i></a>
-                    {% endif %}
+
+                    <a href="/ticket/{{ticket.id}}"><i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Info"></i></a>
+                    <a href="/editticket/{{ticket.id}}"><i class="far fa-edit" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
+                    <a href="/deleteticket/{{ticket.id}}"><i class="far fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>
+
                 </div>
                 <hr/>
                 {% endif %}

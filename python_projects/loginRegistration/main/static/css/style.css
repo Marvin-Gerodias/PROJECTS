@@ -1,5 +1,5 @@
 *{
-    margin: 6px;
+    margin: 10px;
 }
 
 tr, th, td{
@@ -8,6 +8,127 @@ tr, th, td{
     text-align: center;
 }
 
-h2{
+p{
+    font-size: 15px;
+}
+
+body{
+    background-color: rgb(245, 245, 245);
+}
+
+h1{
+    
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+}
+
+h4{
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#wrapper {
+    display: flex;
+    background-color: white;
+    vertical-align: top;
+    justify-content: space-evenly;
+    width: 55rem;
+    margin: auto;
+    padding: 50px 0 70px 0;
     margin-top: 120px;
+    border: 1px solid rgba(146, 146, 146, 0.541);
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px 0.5px rgba(0, 0, 0, 0.048);
+}
+
+button {
+    font-family: 'Raleway', sans-serif;
+}
+
+.registration h4{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.registration {
+    width: 350px;
+}
+
+.login h4{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.login {
+    width: 350px;
+}
+
+.critical {
+    border: 1px solid red;
+    width: 60px;
+    color: white;
+    background-color:red;
+    text-align: center;
+    border-radius: 10px;
+
+}
+
+.moderate {
+    border: 1px solid rgb(255, 196, 0);
+    width: 80px;
+    color: white;
+    background-color:rgb(255, 196, 0);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.low {
+    border: 1px solid rgb(0, 153, 255);
+    width: 60px;
+    color: white;
+    background-color:rgb(0, 153, 255);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.editDeleteContainer {
+    text-align: right;
+}
+
+.editDeleteContainer i{
+    color: rgb(116, 116, 116);
+}
+
+.editDeleteContainer i:hover{
+    color: rgb(15, 15, 15);
+}
+
+.newTicketHeader{
+    display: flex;
+
+}
+
+.newTicketHeader i{
+    color: rgb(255, 143, 143);
+}
+
+.newTicketHeader i:hover{
+    color: red;
+}
+
+.ticketContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    
+}
+
+.ticketInfo{
+    width: 300px;
+    padding: 20px;
+}
+
+.chatLog{
+    width: auto;
+    padding: 20px;
 }

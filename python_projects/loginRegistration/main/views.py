@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import User, Ticket
+from .models import User, Ticket, Chat
 from django.contrib import messages
 import bcrypt
 
@@ -47,6 +47,42 @@ def login(request):
         messages.error(request, "Login failed. Try again.")
     return redirect('/')
 
+def ticket(request, id):
+    ticket = Ticket.objects.get(id = id)
+    user = User.objects.get(id = request.session['user_id'])
+
+    context = {
+        "ticket" : ticket,
+        "myuser" : user,
+        "chats" : Chat.objects.all().order_by('-id')
+    }
+    return render(request, 'ticket.html', context)
+
+def commentprocess(request, id):
+    # errors = Chat.objects.newchat_validator(request.POST)
+    # if len(errors) > 0:
+    #     for val in errors.values():
+    #         messages.error(request, val)
+    #     return redirect(f'/ticket/{id}')
+
+    ticket = Ticket.objects.get(id = id)
+    user = User.objects.get(id = request.session['user_id'])
+    print(ticket)
+    print(user)
+
+    Chat.objects.create(
+        chat_comment = request.POST['chat'],
+        assigned_ticket = ticket,
+        mentioned_by = user,
+    )
+    return redirect(f'/ticket/{id}')
+
+def deletecomment(request, id):
+    d = Chat.objects.get(id = id)
+    ticket_id = d.assigned_ticket.id
+    d.delete()
+    return redirect(f'/ticket/{ticket_id}')
+
 def newticket(request):
     user = User.objects.get(id = request.session['user_id'])
     context ={
@@ -72,12 +108,14 @@ def newticketprocess(request):
         priority_level = request.POST['priority_level'],
         assigned_to = user,
     )
-    return redirect('/dashboard')
+    return redirect('/mytickets')
 
 def editticket(request, id):
+    user = User.objects.get(id = request.session['user_id'])
     ticket = Ticket.objects.get(id = id)
     context = {
-        "ticket" : ticket
+        "ticket" : ticket,
+        "myuser" : user
     }
     return render(request, 'editticket.html', context)
 
@@ -94,7 +132,15 @@ def editticketprocess(request, id):
     new_ticket.comment = request.POST['comment']
     new_ticket.priority_level = request.POST['priority_level']
     new_ticket.save()
-    return redirect('/dashboard')
+    return redirect('/mytickets')
+
+def mytickets(request):
+    tickets = Ticket.objects.all()
+    context = {
+        "myuser" : User.objects.get(id = request.session['user_id']),
+        "tickets" : tickets
+    }
+    return render(request, 'mytickets.html', context)
 
 def deleteticket(request, id):
     d = Ticket.objects.get(id = id)
