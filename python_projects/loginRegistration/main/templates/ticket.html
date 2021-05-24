@@ -72,7 +72,7 @@
                 <div class="chatLog">
                     <form action="/commentprocess/{{ticket.id}}" method="POST">
                     {% csrf_token %}
-                        <h4 style="font-weight: bold;">Team Chat:</h4><br/>
+                        <h4 style="font-weight: bold;">Message Board:</h4><br/>
                         <textarea id="chat" name="chat" rows="5" cols="100"></textarea><br/>
                         <button style="margin: auto; width: 200px;" type="submit" class="btn btn-outline-primary btn-sm">Submit</button>
                     </form><br/>
